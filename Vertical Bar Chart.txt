@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['bar']});
+google.charts.setOnLoadCallback(drawChart_linkResolvers);
+function drawChart_linkResolvers() {
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET","https://apina.hosted.exlibrisgroup.com/almaws/v1/analytics/reports?[PASTE YOUR REPORT PATH HERE]&limit=25&col_names=true&apikey=[API KEY GOES HERE]
+",false);
+xmlhttp.send();
+var xmlDoc = xmlhttp.responseXML;
+var rows = xmlDoc.getElementsByTagName("Row");
+var data = new google.visualization.DataTable();
+data.addColumn('string', '[ENTER COLUMN NAME HERE]');
+data.addColumn('number', '[ENTER COLUMN NAME HERE]');
+for (var i = 0; i < rows.length; i++) {
+data.addRow([
+rows[i].getElementsByTagName("Column1")[0].childNodes[0].nodeValue,
+parseInt(rows[i].getElementsByTagName("Column3")[0].childNodes[0].nodeValue)
+]);
+}
+var options = {
+'title':'Vertical Column Chart',
+ 'legend': 'none',
+'width':1100,
+'height':550,
+ 'legend': 'none',
+ colors:['red','#004411']
+};
+var chart = new google.charts.Bar(document.getElementById('VERTICAL_BAR'));
+chart.draw(data, google.charts.Bar.convertOptions(options));
+}
+ </script>
+<style>
+ caption { font-weight:bold; font-size:2em; }
+td { text-align:center; }
+.pie { max-width:55%; margin:auto; }
+ </style>
+ </head>
+<body>
+<div style="margin:auto; width:98%; text-align:center;">
+ <div id="VERTICAL_BAR"></div>
+</div>
+</body>
+</html>
