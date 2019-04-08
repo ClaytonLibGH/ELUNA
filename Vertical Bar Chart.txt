@@ -15,7 +15,7 @@
 			var xmlDoc = xmlhttp.responseXML;
 			var rows = xmlDoc.getElementsByTagName("Row");
 			var data = new google.visualization.DataTable();
-			data.addColumn('string', '[ENTER X Axis Title HERE]');
+			data.addColumn('string', '[ENTER X AXIS TITLE HERE]');
 			data.addColumn('string', '[ENTER LEGEND HERE]');
 
 			for (var i = 0; i < rows.length; i++) {
