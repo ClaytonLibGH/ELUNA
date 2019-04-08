@@ -15,8 +15,8 @@
 			var xmlDoc = xmlhttp.responseXML;
 			var rows = xmlDoc.getElementsByTagName("Row");
 			var data = new google.visualization.DataTable();
-			data.addColumn('string', '[ENTER HORIZONTAL LEGEND HERE]');
-			data.addColumn('number', '[ENTER VERTICAL LEGEND HERE]');
+			data.addColumn('string', '[ENTER X Axis Title HERE]');
+			data.addColumn('string', '[ENTER LEGEND HERE]');
 
 			for (var i = 0; i < rows.length; i++) {
 				data.addRow([
