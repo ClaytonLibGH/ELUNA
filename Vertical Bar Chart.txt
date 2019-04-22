@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
 
-	google.charts.load('current', {'packages':['bar']});
+	google.charts.load('current', {'packages':['corechart','bar']});
 	google.charts.setOnLoadCallback(drawChart_verticalbar);
 	function drawChart_verticalbar() {
 			var xmlhttp = new XMLHttpRequest();
@@ -15,8 +15,8 @@
 			var xmlDoc = xmlhttp.responseXML;
 			var rows = xmlDoc.getElementsByTagName("Row");
 			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Day of Week');
-			data.addColumn('string', 'Num of Loans');
+			data.addColumn('string', '[ENTER BOTTOM HORIZONTAL LEGEND]');
+			data.addColumn('string', '[ENTER CATEGORY LABEL]');
 
 			for (var i = 0; i < rows.length; i++) {
 				data.addRow([
