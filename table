@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+      function drawTable() {
+      	  xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET","https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports?path=%2Fshared%2FGordon%20State%20College%2FReports%20-%20RJR%2FCirculation%2FLoans%2FRJR%20-%20Loans%20by%20Day%20of%20Week&limit=25&col_names=true&apikey=l7xx6a15ec628ef2479a96ae307016d6f736",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+var rows = xmlDoc.getElementsByTagName("Row");
+        var data = new google.visualization.DataTable();
+        	
+	data.addColumn('string', 'Day of Week');
+	data.addColumn('string', 'Number of Loans');
+    for (var i = 0; i < rows.length; i++) {
+    data.addRow([
+rows[i].getElementsByTagName("Column1").length>0 ? rows[i].getElementsByTagName("Column1")[0].childNodes[0].nodeValue : "",
+rows[i].getElementsByTagName("Column3")[0].childNodes[0].nodeValue
+    
+    ]);
+}
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+      }
+    </script>
+  </head>
+  <h3><center>Loans by Day of Week</center></h3>
+  <body>
+    <div id="table_div"></div>
+  </body>
+</html>
