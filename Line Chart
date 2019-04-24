@@ -9,8 +9,8 @@
 <script type="text/javascript"> 
  
     google.charts.load('current', {'packages':['line']}); 
- 
-google.charts.setOnLoadCallback(drawChart_line); 
+    google.charts.setOnLoadCallback(drawChart_line); 
+
 function drawChart_line() { 
 var xmlhttp = new XMLHttpRequest(); 
 xmlhttp.open("GET","https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports?[PASTE THE REPORT PATH HERE]&limit=25&col_names=true&apikey=[YOUR API KEY GOES HERE]",false); 
@@ -36,7 +36,6 @@ var options = {
 'height':650 
  colors:['[COLOR NAME GOES HERE]','[ENTER YOUR HEX CODE HERE]']
 }; 
-// Instantiate and draw our chart, passing in some options. 
       var chart = new google.charts.Line(document.getElementById('linechart')); 
       chart.draw(data, google.charts.Line.convertOptions(options)); 
 } 
