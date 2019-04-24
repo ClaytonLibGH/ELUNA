@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script type="text/javascript">
+   google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart_piechart);
+   function drawChart_piechart() {
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.open("GET"," https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports?path=%2Fshared%2FGordon%20State%20College%2FReports%20-%20RJR%2FCirculation%2FLoans%2FRJR%20-%20Loans%20by%20Day%20of%20Week&limit=25&col_names=true&apikey=l7xx6a15ec628ef2479a96ae307016d6f736",false);
+ xmlhttp.send();
+   var xmlDoc = xmlhttp.responseXML;
+   var rows = xmlDoc.getElementsByTagName("Row");
+   var data = new google.visualization.DataTable();
+   data.addColumn('string', 'Day of Week');
+   data.addColumn('number', 'Num. of loans');
+   for (var i = 0; i < rows.length; i++) {
+    data.addRow([
+     rows[i].getElementsByTagName("Column1")[0].childNodes[0].nodeValue,
+     parseInt(rows[i].getElementsByTagName("Column3")[0].childNodes[0].nodeValue)
+    ]);
+   }
+   var options = {
+    'title':'Pie Chart',
+    'width':900,
+    'height':650
+   };
+   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+   chart.draw(data, options);
+  }
+    </script>
+    <style>
+     caption { font-weight:bold; font-size:2em; }
+     td { text-align:center; }
+     .pie { max-width:75%; margin:auto; }
+    </style>
+</head>
+<body>
+ <div style="margin:auto; width:98%; text-align:center;">
+  <div id="piechart"></div>
+ </div>
+</body>
+</html>
