@@ -68,19 +68,6 @@ var data = google.visualization.arrayToDataTable([
 
 ['Saturday', 'Loans by Days of the Week', 0, 0],
 
-['China', 'Sunday', 717, 4],
-
-['France', 'Monday', 3292, -11],
-
-['Canada', 'Tuesday', 3227, -23],
-
-['Egypt', 'Wednesday', 2758, 0],
-
-['Sudan', 'Thursday', 2187, 2],
-
-['Congo', 'Friday', 832, 12],
-
-['Zaire', 'Saturday', 28, 10]
 
 ]);
 
