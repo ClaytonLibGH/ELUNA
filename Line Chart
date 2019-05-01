@@ -8,7 +8,7 @@
  
 <script type="text/javascript"> 
  
-    google.charts.load('current', {'packages':['line']}); 
+    google.charts.load('current', {'packages':['corechart']}); 
     google.charts.setOnLoadCallback(drawChart_line); 
 
 function drawChart_line() { 
@@ -36,7 +36,7 @@ var options = {
 'height':650 
  colors:['[COLOR NAME GOES HERE]','[ENTER YOUR HEX CODE HERE]']
 }; 
-      var chart = new google.charts.Line(document.getElementById('linechart')); 
+      var chart = new google.charts.LineChart(document.getElementById('linechart')); 
       chart.draw(data, google.charts.Line.convertOptions(options)); 
 } 
     </script> 
